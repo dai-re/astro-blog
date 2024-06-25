@@ -1,0 +1,13 @@
+---
+interface Props {
+  pagePrev: any;
+  pageNext: any;
+}
+const { pagePrev, pageNext } = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+  <a href={pagePrev}>Sebelumnya</a>
+  -
+  <a href={pageNext}>Berikutnya</a>
+</div>

@@ -1,16 +1,36 @@
 ---
-
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+import Terkini from './terkini.md';
+const allPost = await getCollection('post');
+// short post
+const sortPost = allPost.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const limitPost = sortPost.slice(0, 5);
+interface Props {
+  title: string;
+  desc: string;
+  image: string;
+}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="daire blog" desc="my blog" image="/meta-og.png">
+  <main class="tracking-wide">
+    <h4 class="inline-flex rounded-md bg-stone-700 px-2 text-white">5 Artikel Baru</h4>
+    <ul>
+      {
+        limitPost.map((post: { slug: any; data: { title: unknown; date: any } }) => (
+          <li class="list-none">
+            <span class="text-sm text-stone-600">{post.data.date}</span>
+            <a class="no-underline first-letter:uppercase" href={`/post/${post.slug}`}>
+              {post.data.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <h4 class="inline-flex rounded-md bg-stone-700 px-2 text-white">Berita Terkini</h4>
+    <div class="terkini pl-7">
+      <Terkini />
+    </div>
+  </main>
+</MainLayout>

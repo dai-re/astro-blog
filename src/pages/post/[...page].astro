@@ -1,0 +1,34 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import MetaOg from '../../assets/meta-og.png';
+import { getCollection } from 'astro:content';
+import type { PaginateFunction } from 'astro';
+import BasePaginate from '../../components/BasePaginate.astro';
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const posts = await getCollection('post');
+  const sortPost = posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+  return paginate(sortPost, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<MainLayout title="Daire Blog" desc="My blog" image={MetaOg.src}>
+  <h4 class="inline-flex rounded-md bg-stone-700 px-2 text-white">Semua Artikel</h4>
+  <ul>
+    {
+      page.data.map((page) => (
+        <li class="list-none">
+          <span class="text-sm text-stone-600">{page.data.date}</span>
+          <a class="no-underline first-letter:uppercase" href={`/post/${page.slug}`}>
+            {page.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex w-full items-center justify-center">
+    <BasePaginate pagePrev={page.url.prev} pageNext={page.url.next} />
+  </div>
+</MainLayout>

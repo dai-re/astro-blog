@@ -1,0 +1,13 @@
+---
+import MainLayout from './MainLayout.astro';
+interface Props {
+  title: string;
+  desc: string;
+  image: string;
+}
+const { title, desc, image } = Astro.props;
+---
+
+<MainLayout title={title} desc={desc} image={image}>
+  <slot />
+</MainLayout>

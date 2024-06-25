@@ -1,0 +1,24 @@
+---
+import BaseFooter from '../components/BaseFooter.astro';
+import BaseHeader from '../components/BaseHeader.astro';
+import BaseHead from '../components/BaseHead.astro';
+interface Props {
+  title: string;
+  desc: string;
+  image: string;
+}
+const { title, desc, image } = Astro.props;
+---
+
+<html lang="id">
+  <BaseHead title={title} desc={desc} image={image} />
+  <body>
+    <div class="main prose mx-auto w-screen px-4 tracking-wide sm:px-0">
+      <BaseHeader />
+      <div class="min-h-[calc(100vh-300px)]">
+        <slot />
+      </div>
+      <BaseFooter />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+---
+import { SEO } from 'astro-seo';
+interface Props {
+  title: string;
+  desc: string;
+  image: string;
+}
+const { title, desc, image } = Astro.props;
+---
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <SEO
+    title={title}
+    description={desc}
+    openGraph={{
+      basic: {
+        title: `${title}`,
+        type: 'blog',
+        image: `${image}`,
+      },
+    }}
+    twitter={{
+      creator: '@03ii00',
+    }}
+    extend={{
+      link: [{ rel: 'icon', href: '/favicon.jpeg' }],
+      meta: [
+        {
+          name: 'twitter:image',
+          content: `${image}`,
+        },
+        { name: 'twitter:title', content: `${title}` },
+        { name: 'twitter:description', content: `${desc}` },
+      ],
+    }}
+  />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+</head>

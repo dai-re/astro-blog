@@ -1,0 +1,21 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import MetaOg from '../assets/meta-og.png';
+
+const date = new Date();
+---
+
+<MainLayout title="Hak Cipta" desc="ini adalah halaman hakcipta." image={MetaOg.src}>
+  <p>Hak Cipta © {date.getFullYear()}. Semua Hak Dilindungi Undang-Undang.</p>
+
+  <p>
+    Konten yang diterbitkan di situs web ini, termasuk tetapi tidak terbatas pada teks, grafik, gambar, dan media
+    lainnya, dilindungi oleh hak cipta dan hak kekayaan intelektual lainnya yang dimiliki oleh <a href="/">daire.blog</a
+    > atau pemegang lisensi yang relevan. Penggunaan, reproduksi, distribusi, atau publikasi ulang konten tanpa izin tertulis
+    sebelumnya dari pemilik hak cipta adalah dilarang.
+  </p>
+
+  <p>Untuk informasi lebih lanjut atau permintaan izin, silakan hubungi kami di <a href="/kontak">kontak</a>.</p>
+
+  <p>Terima kasih telah mengunjungi situs web kami.</p>
+</MainLayout>

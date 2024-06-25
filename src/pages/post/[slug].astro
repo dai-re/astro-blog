@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import MarkdownLayout from '../../layouts/MarkdownLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const allPost = await getCollection('post');
+  return allPost.map((post: { [x: string]: any; slug: any }) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const url = `${Astro.url}`;
+
+const word = post.body;
+function wordCount(str: string) {
+  return str.split(' ').filter(function (mun) {
+    return mun != ' ';
+  }).length;
+}
+---
+
+<MarkdownLayout title={post.data.title} desc={post.data.desc} image={post.data.image.src}>
+  <Image src={post.data.image} alt="image" quality={'mid'} format="avif" />
+  <h1 class="mt-6 text-xl">{post.data.title}</h1>
+  <div class="flex items-center gap-2">
+    <button class="flex items-center gap-2 rounded-xl text-xs" id="copy" name="copy text">
+      <Icon name="copy" class="text-xs text-stone-700" />copy url
+    </button>
+    <i class="text-xs text-stone-700">{`${Astro.url}`}</i>
+  </div>
+  <span class="mt-2 flex items-center gap-3 text-xs font-semibold text-stone-700">
+    <Icon name="clock" />
+    {post.data.date}
+    <Icon name="user" />
+    {post.data.admin}
+  </span>
+  <ul class="m-0 flex gap-4 p-0">
+    {
+      post.data.tags.map((tags: any) => (
+        <li class="m-0 mt-2 flex list-none items-center gap-2 px-0 text-xs font-semibold text-stone-700">
+          <Icon name="tag" />
+          {tags}
+        </li>
+      ))
+    }
+  </ul>
+  <span class="mt-2 flex items-center gap-2 text-xs font-semibold text-stone-700"
+    ><Icon name="ruler" />{wordCount(word)} kata</span
+  >
+  <hr />
+  <div class="post">
+    <Content />
+  </div>
+</MarkdownLayout>
+
+<style is:global>
+  .post h1::before,
+  .post h2::before,
+  .post h3::before,
+  .post h4::before,
+  .post h5::before,
+  .post h6::before {
+    content: '# ';
+  }
+</style>
+
+<script define:vars={{ url }} is:inline>
+  document.getElementById('copy').addEventListener('click', () => {
+    navigator.clipboard.writeText(url);
+    alert('Disalin!');
+  });
+</script>
