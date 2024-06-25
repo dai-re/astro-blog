@@ -1,1 +1,1 @@
-export const BaseUrl: string = '/';
+export const BaseUrl: string = 'blog.dairew.my.id';
