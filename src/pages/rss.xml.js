@@ -8,7 +8,7 @@ export async function GET() {
   return rss({
     title: 'Daire Blog',
     description: "I'ts my blog website",
-    site: 'http://daire.eu.org/',
+    site: 'https://blog.dairew.my.id/',
     items: all.map((article) => ({
       title: article.data.title,
       description: article.data.desc,
