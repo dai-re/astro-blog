@@ -12,9 +12,6 @@ export default defineConfig({
     icon(),
     tailwind(),
     mdx(),
-    sitemap({
-      changefreq: 'daily',
-      priority: 0.8,
-    }),
+    sitemap(),
   ],
 });
