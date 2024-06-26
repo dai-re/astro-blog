@@ -6,12 +6,13 @@ interface Props {
   title: string;
   desc: string;
   image: string;
+  keywords: string;
 }
-const { title, desc, image } = Astro.props;
+const { title, desc, image, keywords } = Astro.props;
 ---
 
 <html lang="id">
-  <BaseHead title={title} desc={desc} image={image} />
+  <BaseHead title={title} desc={desc} image={image} keywords={keywords}/>
   <body>
     <div class="main prose mx-auto w-screen px-4 tracking-wide sm:px-0">
       <BaseHeader />

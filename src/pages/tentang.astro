@@ -2,9 +2,10 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import MetaOg from '../assets/meta-og.png';
 import { Image } from 'astro:assets';
+import { keyword } from '../data/data';
 ---
 
-<MainLayout title="Tentang saya" desc="Tentang saya (dai re) , saya adalah junior programer." image={MetaOg.src}>
+<MainLayout title="Tentang saya" desc="Tentang saya (dai re) , saya adalah junior programer." image={MetaOg.src} keywords={keyword}>
   <Image src={MetaOg} alt="meta og" quality={'high'} format="avif" />
   <h2>Tentang saya</h2>
   <p>

@@ -26,7 +26,7 @@ function wordCount(str: string) {
 }
 ---
 
-<MarkdownLayout title={post.data.title} desc={post.data.desc} image={post.data.image.src}>
+<MarkdownLayout title={post.data.title} desc={post.data.desc} image={post.data.image.src} keywords={post.data.key}>
   <Image src={post.data.image} alt="image" quality={'mid'} format="avif" />
   <h1 class="mt-6 text-xl">{post.data.title}</h1>
   <div class="flex items-center gap-2">

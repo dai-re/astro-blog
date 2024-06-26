@@ -1,19 +1,20 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import MetaOg from '../assets/meta-og.png';
+import { description, keyword } from '../data/data';
 ---
 
-<MainLayout title="Kontak" desc="My Kontak" image={MetaOg.src}>
+<MainLayout title="Kontak" desc={description} image={MetaOg.src} keywords={keyword}>
   <h1>Kontak Kami</h1>
   <p>
-    Kami sangat senang mendengar dari Anda! Jika Anda memiliki pertanyaan, komentar, atau ingin berbagi ide, jangan ragu
-    untuk menghubungi kami melalui salah satu cara berikut:
+    Kami sangat senang mengobrol dengan Anda! Jika Anda memiliki pertanyaan, komentar, atau ingin berbagi ide, jangan
+    ragu untuk menghubungi kami melalui salah satu cara berikut:
   </p>
 
   <h2>Email</h2>
   <p>
-    <strong>Umum:</strong>
-    <a href="mailto:me@daire.eu.org">me@daire.eu.org</a>
+    <strong>umum: </strong>
+    <a href="mailto:deichanhime@gmail.com">deichanhime@gmail.com</a>
   </p>
 
   <h2>Media Sosial</h2>

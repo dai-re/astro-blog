@@ -1,11 +1,12 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import MetaOg from '../assets/meta-og.png';
+import { description, keyword } from '../data/data';
 
 const date = new Date();
 ---
 
-<MainLayout title="Hak Cipta" desc="ini adalah halaman hakcipta." image={MetaOg.src}>
+<MainLayout title="Hak Cipta" desc={description} image={MetaOg.src} keywords={keyword}>
   <p>Hak Cipta © {date.getFullYear()}. Semua Hak Dilindungi Undang-Undang.</p>
 
   <p>

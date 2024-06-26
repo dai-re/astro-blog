@@ -9,6 +9,7 @@ const post = defineCollection({
       desc: z.string(),
       image: image(),
       tags: z.array(z.string()),
+      key: z.array(z.string()),
     }),
 });
 

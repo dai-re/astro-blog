@@ -4,11 +4,23 @@ interface Props {
   title: string;
   desc: string;
   image: string;
+  keywords: string;
 }
-const { title, desc, image } = Astro.props;
+const { title, desc, image, keywords } = Astro.props;
 ---
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-X3483D25W6"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-X3483D25W6');
+  </script>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
   <SEO
     title={title}
@@ -35,6 +47,7 @@ const { title, desc, image } = Astro.props;
       ],
     }}
   />
+  <meta name="keywords" content=`${keywords}` />
   <meta property="twitter:card" content="summary_large_image" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />

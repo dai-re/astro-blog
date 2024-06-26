@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
-import Terkini from './terkini.md';
+import Terkini from '../assets/terkini.md';
+import { description, keyword } from '../data/data';
 const allPost = await getCollection('post');
 // short post
 const sortPost = allPost.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
@@ -13,7 +14,7 @@ interface Props {
 }
 ---
 
-<MainLayout title="daire blog" desc="my blog" image="/meta-og.png">
+<MainLayout title="daire blog" desc={description} image="/meta-og.png" keywords={keyword}>
   <main class="tracking-wide">
     <h4 class="inline-flex rounded-md bg-stone-700 px-2 text-white">5 Artikel Baru</h4>
     <ul>

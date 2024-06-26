@@ -5,6 +5,7 @@ admin: Daire
 desc: Ini adalah artikel percobaan
 image: ./g.png
 tags: ['daire', 'coding', cat]
+key: ['daire', 'coding', cat]
 ---
 
 # h1 Heading 8-)

@@ -4,10 +4,11 @@ interface Props {
   title: string;
   desc: string;
   image: string;
+  keywords: string;
 }
-const { title, desc, image } = Astro.props;
+const { title, desc, image, keywords } = Astro.props;
 ---
 
-<MainLayout title={title} desc={desc} image={image}>
+<MainLayout title={title} desc={desc} image={image} keywords={keywords}>
   <slot />
 </MainLayout>

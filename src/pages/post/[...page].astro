@@ -4,6 +4,7 @@ import MetaOg from '../../assets/meta-og.png';
 import { getCollection } from 'astro:content';
 import type { PaginateFunction } from 'astro';
 import BasePaginate from '../../components/BasePaginate.astro';
+import { description, keyword } from '../../data/data';
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
   const posts = await getCollection('post');
@@ -14,7 +15,7 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
 const { page } = Astro.props;
 ---
 
-<MainLayout title="Daire Blog" desc="My blog" image={MetaOg.src}>
+<MainLayout title="Daire Blog" desc={description} image={MetaOg.src} keywords={keyword}>
   <h4 class="inline-flex rounded-md bg-stone-700 px-2 text-white">Semua Artikel</h4>
   <ul>
     {
