@@ -4,7 +4,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Terkini from '../assets/terkini.md';
 import { description, keyword } from '../data/data';
 const allPost = await getCollection('post');
-// short post
 const sortPost = allPost.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 const limitPost = sortPost.slice(0, 5);
 interface Props {
